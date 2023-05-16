@@ -1,0 +1,9 @@
+.MuiCardContent-root {
+    color: #20b2aa;
+    width: fit-content;
+    display: flex;
+  }
+  
+  .MuiCardContent-root:hover {
+    color: #2e8b57;
+  }
