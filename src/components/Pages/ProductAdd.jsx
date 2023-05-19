@@ -13,8 +13,6 @@ function ProductAdd() {
   const [errors, setErrors] = useState({});
 
   const handleChange = (e) => {
-    console.log(e.target.value);
-    console.log(e.target.name);
     const name = e.target.name;
     const value = e.target.value;
 
@@ -38,7 +36,7 @@ function ProductAdd() {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (validate()) {
-      axios.post('http://localhost:8000/addproduct', inputs).then((response) => {
+      axios.post('https://scandiwebjuniortestmohamedabouelnasr.000webhostapp.com/start.php/addproduct', inputs).then((response) => {
         console.log(response.data);
         navigate('/');
       });
@@ -51,7 +49,7 @@ function ProductAdd() {
         <div className="row">
           <h1 className="page-header text-header col-md-9 text-start">Product Add</h1>
           <div className="col">
-            <Button type="submit" className="p-2" variant="primary" size="sm">
+            <Button type="submit" id='save-product-btn' className="p-2" variant="primary" size="sm">
               Save
             </Button>
             </div>
@@ -61,6 +59,7 @@ function ProductAdd() {
               className="p-2"
               variant="secondary"
               size="sm"
+              id='cancel-product-add-btn'
             >
               Cancel
             </Button>
@@ -69,9 +68,10 @@ function ProductAdd() {
         <br />
         <div className="row">
           <div className="col-md-5 mx-2">
-            <Form.Group className="mb-3 mx-left" id="productInputSKU">
+            <Form.Group className="mb-3 mx-left">
               <Form.Label>SKU</Form.Label>
               <Form.Control
+                id="sku"
                 type="text"
                 name="sku"
                 maxLength="9"
@@ -81,9 +81,10 @@ function ProductAdd() {
               />
               {errors.sku && <Form.Text className="text-danger">{errors.sku}</Form.Text>}
             </Form.Group>
-            <Form.Group className="mb-3" id="productInputName">
+            <Form.Group className="mb-3" >
               <Form.Label>Name</Form.Label>
               <Form.Control
+                id="name"
                 type="text"
                 name="name"
                 placeholder="#name"
@@ -92,24 +93,31 @@ function ProductAdd() {
               />
               {errors.name && <Form.Text className="text-danger">{errors.name}</Form.Text>}
             </Form.Group>
-            <Form.Group className="mb-3" id="productInputPrice">
+            <Form.Group className="mb-3">
               <Form.Label>Price</Form.Label>
               <Form.Control
+                id="price"
                 type="number"
                 name="price"
                 step="0.01"
                 min="0"
                 placeholder="#price"
                 onChange={handleChange}
+                onKeyDown={(event) => {
+                  if (event.key === 'e' || event.key === 'E') {
+                    event.preventDefault();
+                  }
+                }}
                 required
               />
               {errors.price && <Form.Text className="text-danger">{errors.price}</Form.Text>}
             </Form.Group>
-            <Form.Group className="mb-3" id="ProductType">
+            <Form.Group className="mb-3" >
               <Form.Label>Product Type</Form.Label>
               <SelectProductType onChange={handleChange}
                 required 
-                name="ProductType"/>
+                name="ProductType"
+                />
               {errors.ProductType && <Form.Text className="text-danger">{errors.ProductType}</Form.Text>}
 
             </Form.Group >

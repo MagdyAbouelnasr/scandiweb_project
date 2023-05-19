@@ -1,5 +1,3 @@
-
-
 import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
 
@@ -30,9 +28,10 @@ function DVDComponent({ onSizeChange }) {
   return (
     <>
       <Form.Label className="mb-3 mt-3">Please, provide Size</Form.Label>
-      <Form.Group className="mb-3 mt-3" id="DVD">
+      <Form.Group className="mb-3 mt-3">
         <Form.Label>Size (MB)</Form.Label>
         <Form.Control
+          id='size'
           type="string"
           placeholder="#size"
           value={size}

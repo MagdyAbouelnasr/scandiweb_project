@@ -26,7 +26,7 @@ export default function ProductList() {
     }, []); 
     async function requestProducts(){
         const res = await fetch(
-            `http://localhost:8000`
+            `https://scandiwebjuniortestmohamedabouelnasr.000webhostapp.com/start.php`
         );
         const json = await res.json();
         console.log(res);
@@ -37,13 +37,18 @@ export default function ProductList() {
         selectedProdutsDelete.forEach(product => deleteProduct(product))
     }
 
-    const deleteProduct = (id)=>{
+    const deleteProduct = (id) => {
         console.log(id);
-        axios.delete(`http://localhost:8000/${id}/deleteproduct`).then((response)=>{
+        axios.post(`https://scandiwebjuniortestmohamedabouelnasr.000webhostapp.com/start.php`, {
+          _method: 'DELETE',
+          id: id
+        })
+          .then((response) => {
             console.log(response.data);
             requestProducts();
-        });
-    }
+          });
+      }
+      
 
     return (
         <>
@@ -51,13 +56,13 @@ export default function ProductList() {
                 <div className="row">
                     <h1 className="page-header text-header col-md-9 text-start ">Product List</h1>
                     <div className='col'>
-                        <Button onClick={() => navigate('addproduct')} className='p-2' variant="primary" size="sm">
-                            Add
+                        <Button onClick={() => navigate('add-product')} id='add-product-btn' className='p-2' variant="primary" size="sm">
+                        ADD
                         </Button>
                     </div>
                     <div className='col'>
                         <Button onClick={deleteProducts} id="delete-product-btn" className='p-2 ' variant="secondary" size="sm">
-                            Mass Delete
+                        MASS DELETE
                         </Button>
                     </div>
                 </div>

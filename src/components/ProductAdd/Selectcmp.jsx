@@ -46,13 +46,14 @@ const SelectProductType = (props) => {
 
   return (
     <>
-      <Form.Group className="mb-3" id="productInputName">
+      <Form.Group className="mb-3">
         <Form.Select
           aria-label="select product type"
           value={type}
           onChange={handleOnChange}
           required
           name="product_type"
+          id="productType"
         >
           <option value="selectProductType">Select product Type</option>
           <option value="DVD">DVD</option>

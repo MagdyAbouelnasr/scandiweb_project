@@ -85,19 +85,19 @@ function FurnitureComponent({ onDimensionsChange }) {
   return (
     <>
       <Form.Label className="mb-3 mt-3">Please provide dimensions</Form.Label>
-      <Form.Group className="mb-3 mt-3" controlId="height">
+      <Form.Group className="mb-3 mt-3">
         <Form.Label>Height (CM)</Form.Label>
-        <Form.Control type="string" placeholder="#Height" value={height} onChange={handleHeightChange} />
+        <Form.Control id='height' type="string" placeholder="#Height" value={height} onChange={handleHeightChange} />
         {errors.height && <Form.Text className="text-danger">{errors.height}</Form.Text>}
       </Form.Group>
-      <Form.Group className="mb-3" controlId="width">
+      <Form.Group className="mb-3">
         <Form.Label>Width (CM)</Form.Label>
-        <Form.Control type="string" placeholder="#Width" value={width} onChange={handleWidthChange} />
+        <Form.Control id='width' type="string" placeholder="#Width" value={width} onChange={handleWidthChange} />
         {errors.width && <Form.Text className="text-danger">{errors.width}</Form.Text>}
       </Form.Group>
-      <Form.Group className="mb-3" controlId="length">
+      <Form.Group className="mb-3">
         <Form.Label>Length (CM)</Form.Label>
-        <Form.Control type="string" placeholder="#Length" value={length} onChange={handleLengthChange} />
+        <Form.Control id='length' type="string" placeholder="#Length" value={length} onChange={handleLengthChange} />
         {errors.length && <Form.Text className="text-danger">{errors.length}</Form.Text>}
       </Form.Group>
     </>

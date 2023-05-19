@@ -29,9 +29,10 @@ function BookComponent({ onWeightChange }) {
   return (
     <>
       <Form.Label className="mb-3 mt-3">Please, provide weight</Form.Label>
-      <Form.Group className="mb-3 mt-3" id="Book">
+      <Form.Group className="mb-3 mt-3">
         <Form.Label>Weight (KG)</Form.Label>
         <Form.Control
+          id='weight'
           type="string"
           placeholder="#weight"
           value={weight}
